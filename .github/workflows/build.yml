@@ -4,14 +4,14 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: kivy/buildozer
+    
     steps:
     - uses: actions/checkout@v4
     
-    - name: Build APK with pre-configured environment
-      uses: kivy/buildozer-action@master
-      with:
-        workdir: .
-        buildozer_version: stable
+    - name: Build APK
+      run: |
+        buildozer android debug
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
