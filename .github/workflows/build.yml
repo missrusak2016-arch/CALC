@@ -7,10 +7,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Build APK
-      uses: hedpetsc/buildozer-action@v1
-      with:
-        workdir: .
+    - name: Build APK with Python
+      run: |
+        docker run --rm -v $(pwd):/src \
+          kivy/buildozer:latest \
+          /bin/bash -c "cd /src && buildozer android debug"
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
