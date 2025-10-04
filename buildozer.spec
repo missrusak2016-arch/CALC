@@ -14,9 +14,7 @@ orientation = portrait
 [buildozer]
 log_level = 2
 
-[app]
-android.permissions = INTERNET
-
-[app]
-android.api = 33
-android.minapi = 21
+[app:android]
+permissions = INTERNET
+api = 33
+minapi = 21
